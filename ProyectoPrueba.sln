@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoPrueba.Android", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoPrueba.iOS", "ProyectoPrueba\ProyectoPrueba.iOS\ProyectoPrueba.iOS.csproj", "{A1FBDFF4-5957-44FD-8320-B7C7F201BECE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoPrueba", "ProyectoPrueba\ProyectoPrueba\ProyectoPrueba.csproj", "{E30FBEA2-A96F-4B08-B2A2-EC2E029FA108}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoPrueba", "ProyectoPrueba\ProyectoPrueba\ProyectoPrueba.csproj", "{E30FBEA2-A96F-4B08-B2A2-EC2E029FA108}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoPrueba.Domain", "ProyectoPrueba.Domain\ProyectoPrueba.Domain.csproj", "{9633A90C-2C67-495F-8628-9824B2BC751D}"
 EndProject
