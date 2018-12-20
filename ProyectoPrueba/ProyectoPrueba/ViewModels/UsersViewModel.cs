@@ -1,8 +1,10 @@
 ﻿namespace ProyectoPrueba.ViewModels
 {
     using System;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
+    using ProyectoPrueba.Models;
     using ProyectoPrueba.Services;
     public class UsersViewModel : INotifyPropertyChanged
     {
@@ -13,6 +15,7 @@
         #endregion
 
         #region Atributes
+        private ObservableCollection<User> _users;
         private bool _isRefreshing;
         #endregion
 
@@ -27,6 +30,19 @@
         #endregion
 
         #region Properties
+        public ObservableCollection<User> Users
+        {
+            get
+            {
+                return _users;
+            }
+            set
+            {
+                _users = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool IsRefreshing
         {
             get
