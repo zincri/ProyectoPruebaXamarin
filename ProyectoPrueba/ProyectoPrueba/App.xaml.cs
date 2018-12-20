@@ -12,8 +12,10 @@ namespace ProyectoPrueba
 		{
 			InitializeComponent();
 
-			MainPage = new StartPage();
-		}
+			//MainPage = new StartPage();
+            NavigationPage objeto = new NavigationPage(new Views.StartPage());
+            MainPage = objeto;
+        }
 
 		protected override void OnStart ()
 		{

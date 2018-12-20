@@ -89,10 +89,10 @@
                 IsEnable = true;
                 return;
             }
-            await App.Current.MainPage.DisplayAlert(
+            /*await App.Current.MainPage.DisplayAlert(
                 "Entro",
                     "Si entro al metodo",
-                "Ok");
+                "Ok");*/
             /*
             var token = await this.apiService.GetToken(
                 "http://landsapi1.azurewebsites.net",

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProyectoPrueba.Models
 {
-    class User
+    public class User
     {
         public int Codigo { get; set; }
         public String Nombre { get; set; }

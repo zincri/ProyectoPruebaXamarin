@@ -1,12 +1,78 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="ProyectoPrueba.Views.UsersPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            BackgroundColor="#007fb7"
+            BindingContext="{Binding Users}"
+            Padding="10,20">
+            
             <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="StartAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            
+            <ListView 
+                BackgroundColor="#007fb7"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Lands}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                BackgroundColor="#37d472"
+                                CornerRadius="20"
+                                Margin="5"
+                                HasShadow="false">
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
+                                </Frame.GestureRecognizers>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <ffimageloading:CachedImage
+                                        Grid.Column="0"
+                                        HeightRequest="30"
+                                        WidthRequest="60"
+                                        Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}">
+                                    </ffimageloading:CachedImage>
+                                    <StackLayout 
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">
+
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding Name}"
+                                            TextColor="White">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding Capital}"
+                                            TextColor="White">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image 
+                                        Grid.Column="2"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
