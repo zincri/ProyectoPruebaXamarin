@@ -18,7 +18,7 @@
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Lands}"
+                ItemsSource="{Binding Users}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -30,23 +30,24 @@
                                 Margin="5"
                                 HasShadow="false">
 
-                                <Frame.GestureRecognizers>
+                                <!--<Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
-                                </Frame.GestureRecognizers>
+                                </Frame.GestureRecognizers>-->
 
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <!--<ColumnDefinition Width="Auto"/>-->
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="0.5*"/>
                                     </Grid.ColumnDefinitions>
-
-                                    <ffimageloading:CachedImage
+                                    
+                                    <!--<ffimageloading:CachedImage
                                         Grid.Column="0"
                                         HeightRequest="30"
                                         WidthRequest="60"
                                         Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}">
-                                    </ffimageloading:CachedImage>
+                                    </ffimageloading:CachedImage>-->
+                                    
                                     <StackLayout 
                                         Grid.Column="1"
                                         VerticalOptions="Center">
@@ -54,11 +55,11 @@
                                         <Label 
                                             FontAttributes="Bold"
                                             FontSize="Medium" 
-                                            Text="{Binding Name}"
+                                            Text="{Binding Nombre}"
                                             TextColor="White">
                                         </Label>
                                         <Label 
-                                            Text="{Binding Capital}"
+                                            Text="{Binding Correo}"
                                             TextColor="White">
                                         </Label>
                                     </StackLayout>

@@ -6,6 +6,11 @@
     {
 
         #region Properties
+        public List<User> UsersList
+        {
+            get;
+            set;
+        }
         public TokenResponse Token
         {
             get;

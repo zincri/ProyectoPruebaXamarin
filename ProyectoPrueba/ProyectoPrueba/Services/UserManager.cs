@@ -20,7 +20,6 @@
             client.DefaultRequestHeaders.Add("Accept","aplication/json");
             client.DefaultRequestHeaders.Add("Connection","close");
             return client;
-
         }
         public async Task<IEnumerable<User>> GetUsers()
         {

@@ -117,6 +117,42 @@
             }
         }
 
+        #region Prueba_ConsumirWeb
+        private HttpClient GetClient()
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Accept", "aplication/json");
+            client.DefaultRequestHeaders.Add("Connection", "close");
+            return client;
+        }
+
+
+        //public async Task<IEnumerable<User>> GetUsers(String URL)
+        public async Task<Response> GetUsers(String URL)
+        {
+            HttpClient client = GetClient();
+
+            var response = await client.GetAsync(URL);
+            var result = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = result,
+                };
+            }
+            var list = JsonConvert.DeserializeObject<IEnumerable<User>>(result);
+            return new Response
+            {
+                IsSuccess = true,
+                Message = "Ok",
+                Result = list,
+            };
+
+        }
+        #endregion
+
         public async Task<Response> GetList<T>(
             string urlBase,
             string servicePrefix,

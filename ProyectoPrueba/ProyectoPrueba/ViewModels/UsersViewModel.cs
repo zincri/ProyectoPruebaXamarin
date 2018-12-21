@@ -1,9 +1,12 @@
 ﻿namespace ProyectoPrueba.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using ProyectoPrueba.Models;
     using ProyectoPrueba.Services;
     public class UsersViewModel : INotifyPropertyChanged
@@ -24,7 +27,7 @@
         {
             this.userManager = new UserManager();
             this.apiService = new ApiService();
-            this.loadUsers();
+            this.LoadUsers();
 
         }
         #endregion
@@ -62,11 +65,11 @@
 
 
         #region Methods
-        private async void loadUsers()
+        private async void LoadUsers()
         {
-            /*
+
             this.IsRefreshing = true;
-            //http://restcountries.eu/rest/v2/all
+            //Check Connection
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -76,7 +79,9 @@
                 return;
 
             }
-            var response = await this.apiService.GetList<Land>("http://restcountries.eu", "/rest", "/v2/all");
+            var response = await this.apiService.GetUsers("http://xamarin.addictphones.com/listado.php");
+
+            //var response = await this.apiService.GetList<Land>("http://restcountries.eu", "/rest", "/v2/all");
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -84,12 +89,10 @@
                 await App.Current.MainPage.Navigation.PopAsync();
                 return;
             }
-
-            MainViewModel.GetInstance().LandsList = (List<Land>)response.Result;
+            MainViewModel.GetInstance().UsersList = (List<User>)response.Result;
             this.IsRefreshing = false;
-            this.Lands = new ObservableCollection<LandItemViewModel>(
-                this.ToLandItemViewModel());
-                */               
+            this.Users = new ObservableCollection<User>(MainViewModel.GetInstance().UsersList);
+                             
         }
 
         private void OnPropertyChanged([CallerMemberName] String propertyName = "")
@@ -99,6 +102,17 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
+
+        #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadUsers);
+            }
+        }
+
         #endregion
 
     }
