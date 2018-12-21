@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="ProyectoPrueba.Views.UsersPage">
+    
     <ContentPage.Content>
         <StackLayout
             BackgroundColor="#007fb7"
@@ -36,17 +37,15 @@
 
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <!--<ColumnDefinition Width="Auto"/>-->
+                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="0.5*"/>
                                     </Grid.ColumnDefinitions>
-                                    
-                                    <!--<ffimageloading:CachedImage
+                                    <Image 
                                         Grid.Column="0"
-                                        HeightRequest="30"
-                                        WidthRequest="60"
-                                        Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}">
-                                    </ffimageloading:CachedImage>-->
+                                        HorizontalOptions="End" 
+                                        Source="download">
+                                    </Image>
                                     
                                     <StackLayout 
                                         Grid.Column="1"
