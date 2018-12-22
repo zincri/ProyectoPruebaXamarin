@@ -24,6 +24,11 @@
             get;
             set;
         }
+        public MapsViewModel Maps
+        {
+            get;
+            set;
+        }
         public UsersViewModel Users
         {
             get;

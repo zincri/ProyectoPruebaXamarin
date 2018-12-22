@@ -13,10 +13,7 @@
         #endregion
 
         #region Vars
-        private string _email;
-        private string _password;
         private bool _isRunning;
-        private bool _isRemembered;
         private bool _isEnable;
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
@@ -57,6 +54,14 @@
                 return new RelayCommand(ListadoMethod);
             }
         }
+
+            public ICommand MapsCommand
+        {
+            get
+            {
+                return new RelayCommand(MapsMethod);
+            }
+        }
         #endregion
 
         #region Constructors
@@ -89,42 +94,6 @@
                 IsEnable = true;
                 return;
             }
-            /*await App.Current.MainPage.DisplayAlert(
-                "Entro",
-                    "Si entro al metodo",
-                "Ok");*/
-            /*
-            var token = await this.apiService.GetToken(
-                "http://landsapi1.azurewebsites.net",
-                "user",
-                "pass");
-                */
-
-            /*
-            if (token == null)
-            {
-                IsRunning = false;
-                IsEnable = true;
-                await App.Current.MainPage.DisplayAlert(
-                Languages.Error,
-                Languages.SomethingWrong,
-                Languages.Ok);
-                this.Password = string.Empty;
-                return;
-
-            }
-            if (string.IsNullOrEmpty(token.AccessToken))
-            {
-                IsRunning = false;
-                IsEnable = true;
-                await App.Current.MainPage.DisplayAlert(
-                Languages.Error,
-                    token.ErrorDescription,
-                Languages.Ok);
-                this.Password = string.Empty;
-                return;
-            }
-            */
 
             var mainViewModel = MainViewModel.GetInstance();
             //mainViewModel.Token = token;
@@ -134,6 +103,33 @@
 
             IsRunning = false;
             IsEnable = true;
+
+        }
+        private async void MapsMethod()
+        {
+            IsRunning = true;
+            IsEnable = false;
+            var conection = await this.apiService.CheckConnection();
+            if (!conection.IsSuccess)
+            {
+
+                IsRunning = false;
+                IsEnable = true;
+                await App.Current.MainPage.DisplayAlert(
+                "Error",
+                    conection.Message,
+                "Ok");
+                return;
+            }
+            IsRunning = false;
+            IsEnable = true;
+
+
+            var mainViewModel = MainViewModel.GetInstance();
+
+            mainViewModel.Maps = new MapsViewModel();
+            await App.Current.MainPage.Navigation.PushAsync(new Views.MapsPage());
+
 
         }
 

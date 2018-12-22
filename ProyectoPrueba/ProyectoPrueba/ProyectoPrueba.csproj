@@ -16,11 +16,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Views\MaspPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Update="Views\StartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UsersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\MaspPage.xaml.cs" />
   </ItemGroup>
 </Project>
