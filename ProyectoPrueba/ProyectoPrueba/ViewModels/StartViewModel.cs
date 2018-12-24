@@ -107,6 +107,7 @@
         }
         private async void MapsMethod()
         {
+
             IsRunning = true;
             IsEnable = false;
             var conection = await this.apiService.CheckConnection();
@@ -129,7 +130,6 @@
 
             mainViewModel.Maps = new MapsViewModel();
             await App.Current.MainPage.Navigation.PushAsync(new Views.MapsPage());
-
 
         }
 

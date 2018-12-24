@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
+    using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
@@ -18,7 +19,7 @@
         #endregion
 
         #region Atributes
-        private ObservableCollection<User> _users;
+        private ObservableCollection<UserItemViewModel> _users;
         private bool _isRefreshing;
         #endregion
 
@@ -33,7 +34,7 @@
         #endregion
 
         #region Properties
-        public ObservableCollection<User> Users
+        public ObservableCollection<UserItemViewModel> Users
         {
             get
             {
@@ -91,8 +92,22 @@
             }
             MainViewModel.GetInstance().UsersList = (List<User>)response.Result;
             this.IsRefreshing = false;
-            this.Users = new ObservableCollection<User>(MainViewModel.GetInstance().UsersList);
+            this.Users = new ObservableCollection<UserItemViewModel>(ToUserItemViewModel());
                              
+        }
+
+        private IEnumerable<UserItemViewModel> ToUserItemViewModel()
+        {
+            return MainViewModel.GetInstance().UsersList.Select(landlst => new UserItemViewModel
+            {
+                Nombre = landlst.Nombre,
+                Codigo = landlst.Codigo,
+                Edad = landlst.Edad,
+                Correo = landlst.Correo,
+                Pas = landlst.Pas,
+
+            });
+
         }
 
         private void OnPropertyChanged([CallerMemberName] String propertyName = "")
@@ -102,38 +117,6 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        private async void SelectUser()
-        {
-
-            //this.IsRefreshing = true;
-            //Check Connection
-            /*
-            var connection = await this.apiService.CheckConnection();
-            if (!connection.IsSuccess)
-            {
-                this.IsRefreshing = false;
-                await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
-                await App.Current.MainPage.Navigation.PopAsync();
-                return;
-
-            }
-            var response = await this.apiService.GetUsers("http://xamarin.addictphones.com/listado.php");
-            */
-            //var response = await this.apiService.GetList<Land>("http://restcountries.eu", "/rest", "/v2/all");
-            //if (!response.IsSuccess)
-            //{
-            //    this.IsRefreshing = false;
-                await App.Current.MainPage.DisplayAlert("Message", "Entro a User", "Accept");
-                await App.Current.MainPage.Navigation.PopAsync();
-                //return;
-            //}
-            //MainViewModel.GetInstance().UsersList = (List<User>)response.Result;
-            //this.IsRefreshing = false;
-            //this.Users = new ObservableCollection<User>(MainViewModel.GetInstance().UsersList);
-
-        }
-
         #endregion
 
         #region Commands
@@ -143,13 +126,6 @@
             get
             {
                 return new RelayCommand(LoadUsers);
-            }
-        }
-        public ICommand SelectUserCommand
-        {
-            get
-            {
-                return new RelayCommand(SelectUser);
             }
         }
 
