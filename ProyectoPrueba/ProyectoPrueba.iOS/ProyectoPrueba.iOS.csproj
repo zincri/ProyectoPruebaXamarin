@@ -165,5 +165,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_chevron_right.png" />
     <BundleResource Include="Resources\download.png" />
+    <BundleResource Include="Resources\contacto.png" />
   </ItemGroup>
 </Project>

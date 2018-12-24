@@ -6,16 +6,12 @@
     
     <ContentPage.Content>
         <StackLayout
-            BackgroundColor="#007fb7"
+            BackgroundColor="#FFFFFF"
             BindingContext="{Binding Users}"
             Padding="10,20">
             
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            
             <ListView 
-                BackgroundColor="#007fb7"
+                BackgroundColor="#FFFFFF"
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
@@ -26,14 +22,15 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame
-                                BackgroundColor="#37d472"
+                                BackgroundColor="#FFFFFF"
                                 CornerRadius="20"
                                 Margin="5"
-                                HasShadow="false">
+                                HasShadow="true"
+                                HeightRequest="100">
 
-                                <!--<Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
-                                </Frame.GestureRecognizers>-->
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectUserCommand}"/>
+                                </Frame.GestureRecognizers>
 
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -43,10 +40,9 @@
                                     </Grid.ColumnDefinitions>
                                     <Image 
                                         Grid.Column="0"
-                                        HorizontalOptions="End" 
-                                        Source="download">
+                                        HorizontalOptions="Start"
+                                        Source="contacto">
                                     </Image>
-                                    
                                     <StackLayout 
                                         Grid.Column="1"
                                         VerticalOptions="Center">
@@ -55,11 +51,11 @@
                                             FontAttributes="Bold"
                                             FontSize="Medium" 
                                             Text="{Binding Nombre}"
-                                            TextColor="White">
+                                            TextColor="Black">
                                         </Label>
                                         <Label 
                                             Text="{Binding Correo}"
-                                            TextColor="White">
+                                            TextColor="Gray">
                                         </Label>
                                     </StackLayout>
                                     <Image 

@@ -86,6 +86,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\ic_chevron_right.png" />
     <AndroidResource Include="Resources\drawable\download.png" />
+    <AndroidResource Include="Resources\drawable\contacto.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

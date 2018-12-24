@@ -102,14 +102,54 @@
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        private async void SelectUser()
+        {
+
+            //this.IsRefreshing = true;
+            //Check Connection
+            /*
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
+                await App.Current.MainPage.Navigation.PopAsync();
+                return;
+
+            }
+            var response = await this.apiService.GetUsers("http://xamarin.addictphones.com/listado.php");
+            */
+            //var response = await this.apiService.GetList<Land>("http://restcountries.eu", "/rest", "/v2/all");
+            //if (!response.IsSuccess)
+            //{
+            //    this.IsRefreshing = false;
+                await App.Current.MainPage.DisplayAlert("Message", "Entro a User", "Accept");
+                await App.Current.MainPage.Navigation.PopAsync();
+                //return;
+            //}
+            //MainViewModel.GetInstance().UsersList = (List<User>)response.Result;
+            //this.IsRefreshing = false;
+            //this.Users = new ObservableCollection<User>(MainViewModel.GetInstance().UsersList);
+
+        }
+
         #endregion
 
         #region Commands
+
         public ICommand RefreshCommand
         {
             get
             {
                 return new RelayCommand(LoadUsers);
+            }
+        }
+        public ICommand SelectUserCommand
+        {
+            get
+            {
+                return new RelayCommand(SelectUser);
             }
         }
 
