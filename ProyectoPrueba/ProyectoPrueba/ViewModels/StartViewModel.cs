@@ -105,6 +105,7 @@
             IsEnable = true;
 
         }
+        #region REGION_TEMPORAL
         private async void MapsMethod()
         {
 
@@ -129,9 +130,11 @@
             var mainViewModel = MainViewModel.GetInstance();
 
             mainViewModel.Maps = new MapsViewModel();
-            await App.Current.MainPage.Navigation.PushAsync(new Views.MapsPage());
+            //await App.Current.MainPage.Navigation.PushAsync(new Views.MapsPage());
+            await App.Current.MainPage.Navigation.PushAsync(new Views.MapPageCS());
 
         }
+        #endregion
 
         private void OnPropertyChanged([CallerMemberName] String propertyName = "")
         {

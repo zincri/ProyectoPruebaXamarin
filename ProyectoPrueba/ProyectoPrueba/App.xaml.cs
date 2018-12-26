@@ -8,11 +8,12 @@ namespace ProyectoPrueba
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static double ScreenHeight;
+        public static double ScreenWidth;
+        public App ()
 		{
 			InitializeComponent();
-
-			//MainPage = new StartPage();
+            //MainPage = new StartPage();
             NavigationPage objeto = new NavigationPage(new Views.StartPage());
             MainPage = objeto;
         }
