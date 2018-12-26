@@ -20,7 +20,7 @@
         #region Methods
         private async void SelectUser()
         {
-
+            //AQUI LANZAR LA VISTA PARA DETALLE CONTACTO
             var mainViewModel = MainViewModel.GetInstance();
 
             mainViewModel.Maps = new MapsViewModel();
