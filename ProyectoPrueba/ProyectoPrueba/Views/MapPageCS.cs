@@ -19,7 +19,7 @@
             var pin = new CustomPin
             {
                 Type = PinType.Place,
-                Position = new Position(16.7459503, -93.2696561),
+                Position = new Position(16.752966, -93.106369),
                 Label = "Tuxtla Gutiérrez",
                 Address = "Chiapas",
                 Id = "Xamarin",
@@ -29,7 +29,7 @@
 
             customMap.CustomPins = new List<CustomPin> { pin };
             customMap.Pins.Add(pin);
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(16.7459503, -93.2696561), Distance.FromMiles(1.0)));
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(16.752966, -93.106369), Distance.FromMiles(1.0)));
 
             Content = customMap;
         }
