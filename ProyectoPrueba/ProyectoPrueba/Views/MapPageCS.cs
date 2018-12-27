@@ -24,7 +24,6 @@
                 Address = "Chiapas",
                 Id = "Xamarin",
                 Url = "http://xamarin.com/about/"
-
             };
 
             customMap.CustomPins = new List<CustomPin> { pin };

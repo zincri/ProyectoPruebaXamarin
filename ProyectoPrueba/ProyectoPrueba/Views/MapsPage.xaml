@@ -2,14 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BindingContext= "{Binding Main, Source={StaticResource Locator}}"
+             xmlns:localx="clr-namespace:ProyectoPrueba.Models"
+             xmlns:local="clr-namespace:ProyectoPrueba"
              x:Class="ProyectoPrueba.Views.MapsPage">
     <ContentPage.Content>
-        <StackLayout
-            BindingContext="{Binding Maps}">
-            <Label
-            Text="HOLA"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand"></Label>
-        </StackLayout>
+        <localx:CustomMap x:Name="customMap" 
+                         MapType="Street"
+                         WidthRequest="{x:Static local:App.ScreenWidth}" 
+                         HeightRequest="{x:Static local:App.ScreenHeight}" />
     </ContentPage.Content>
 </ContentPage>

@@ -128,10 +128,10 @@
 
 
             var mainViewModel = MainViewModel.GetInstance();
-
-            mainViewModel.Maps = new MapsViewModel();
+            //
+            //mainViewModel.Maps = new MapsViewModel();
             //await App.Current.MainPage.Navigation.PushAsync(new Views.MapsPage());
-            await App.Current.MainPage.Navigation.PushAsync(new Views.MapPageCS());
+            await App.Current.MainPage.Navigation.PushAsync(new Views.MapsPage());
 
         }
         #endregion
